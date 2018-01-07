@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -12,7 +13,8 @@ import { AppComponent } from './app.component';
     imports: [
         BrowserAnimationsModule,
         MaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]

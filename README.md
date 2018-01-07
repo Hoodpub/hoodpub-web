@@ -33,6 +33,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 | Getting data from backend | 백엔드와 연동하여 실제 데이타 가지고 오기 |
 | Infinite scrolling        | 갱신된 내용 받아오기                      |
 | Starting to test          | 테스트 코드 삽입을 위한 환경 이해         |
+|                           |                             |
 
 
 ## 진행
