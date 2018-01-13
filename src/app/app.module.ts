@@ -4,6 +4,7 @@ import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { HoodpubService } from './hoodpub.service';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -16,7 +17,9 @@ import { AppComponent } from './app.component';
         FlexLayoutModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [
+        HoodpubService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

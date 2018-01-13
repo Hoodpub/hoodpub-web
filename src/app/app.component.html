@@ -15,6 +15,11 @@
   
 </mat-toolbar>
 
+<button (click)="search()">
+  모든 옵션을 선택하셔야 디자인을 완성할 수 있어요. 디자인을 마저 끝내시겠습니까?
+</button>
+
+
 <tr *ngFor="let tile of tiles" flex fxLayout="column" fxLayout.lt-sm="column">
 
   <mat-card class="example-card">
