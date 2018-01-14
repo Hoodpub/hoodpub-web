@@ -3,7 +3,7 @@ export interface ApiError {
     message?: string;
 }
 
-export interface BookItem {
+export class BookItem {
     author: string;
     barcode: string;
     category: string;
@@ -37,6 +37,10 @@ export interface Channel {
     item: BookItem[];
 }
 
-export interface BookSearch {
+export interface Res {
     channel: Channel;
+}
+
+export interface BookSearch {
+    res: Res;
 }

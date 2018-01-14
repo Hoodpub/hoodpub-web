@@ -15,35 +15,31 @@
   
 </mat-toolbar>
 
-<button (click)="search('자유')">
-  모든 옵션을 선택하셔야 디자인을 완성할 수 있어요. 디자인을 마저 끝내시겠습니까?
-resp {{ title }} {{ resp }}
-</button>
-
-book1
-<tr *ngFor="let book of books" >
-  bok {{ book.author }} 
-</tr>
-
-book2
-<tr *ngFor="let book of tiles" >
-  {{ book }} 
-</tr>
+<form class="form-inline">
+  <div class="form-group">
+    <input type="search"
+           class="form-control"
+           placeholder="Enter search string"
+           [formControl]="searchField">
+  </div>
+</form>
 
 
-<tr *ngFor="let tile of tiles" flex fxLayout="column" fxLayout.lt-sm="column">
+<div class="text-center">
+  <p class="lead" *ngIf="loading">Loading...</p>
+</div>
+
+<tr *ngFor="let book of books$ | async"  flex fxLayout="column" fxLayout.lt-sm="column">
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      <mat-card-title>{{ book.author }}</mat-card-title>
+      <mat-card-subtitle>{{ book.category }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img mat-card-image class="book-image" src="{{ book.cover_l_url }}" alt="Photo of a Shiba Inu">
     <mat-card-content>
       <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
+        {{ book.description }}
       </p>
     </mat-card-content>
     <mat-card-actions>

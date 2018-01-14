@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HoodpubService } from './hoodpub.service';
 import { Observable } from 'rxjs/Observable';
+import { FormControl } from '@angular/forms';
 import { BookItem, Channel, BookSearch } from './protocol';
+import { debounceTime, filter, map, switchMap, tap, distinctUntilChanged } from 'rxjs/operators';
+
 
 @Component({
     selector: 'app-root',
@@ -10,30 +13,22 @@ import { BookItem, Channel, BookSearch } from './protocol';
 })
 
 export class AppComponent implements OnInit {
-    resp = 'hello';
-    title = 'book';
-    // books: Observable<BookItem[]>;
-    books: BookItem[];
-    tiles = [
-        {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-        {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-        // {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-        // {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-    ];
+    books$: Observable<BookItem[]>;
+    private searchField: FormControl;
 
     constructor(private hoodpubService: HoodpubService) {
     }
 
 
     ngOnInit() {
-        console.log('ngOninit');
+        this.searchField = new FormControl();
+        // this.books$ = this.hoodpubService.search();
+        this.books$ = this.searchField.valueChanges.pipe(
+            debounceTime(400),
+            distinctUntilChanged(),
+            switchMap(term => this.hoodpubService.search(term)));
     }
 
-    search(keyword?: string) {
-        this.hoodpubService.search(keyword)
-            .subscribe(resp => {
-                this.books = resp;
-                console.log('this.books', this.books);
-            });
-    }
+// doSearch(keyword?: string) {
+// }
 }

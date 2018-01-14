@@ -6,7 +6,9 @@
   flex: 1 1 auto;
 }
 
-
+.book-image {
+    width:30vh;
+}
 
 .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
