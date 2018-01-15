@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.searchField = new FormControl();
-        // this.books$ = this.hoodpubService.search();
         this.books$ = this.searchField.valueChanges.pipe(
             debounceTime(400),
             distinctUntilChanged(),

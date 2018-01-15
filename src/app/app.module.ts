@@ -7,10 +7,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { HoodpubService } from './hoodpub.service';
 import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        MainComponent
     ],
     imports: [
         BrowserAnimationsModule,
