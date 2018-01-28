@@ -37,10 +37,6 @@ export interface Channel {
     item: BookItem[];
 }
 
-export interface Res {
-    channel: Channel;
-}
-
 export interface BookSearch {
-    res: Res;
+    channel: Channel;
 }

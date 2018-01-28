@@ -14,7 +14,7 @@ import { debounceTime, filter, map, switchMap, tap, distinctUntilChanged } from 
 
 export class AppComponent implements OnInit {
     books$: Observable<BookItem[]>;
-    private searchField: FormControl;
+    public searchField: FormControl;
 
     constructor(private hoodpubService: HoodpubService) {
     }

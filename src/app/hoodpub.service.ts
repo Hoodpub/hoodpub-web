@@ -34,14 +34,14 @@ export class HoodpubService {
     search(keyword?: string): Observable<BookItem[]> {
         console.log('keyword', keyword);
         const params = new HttpParams().set('keyword', keyword);
-        const url = `${API_URL}/book/`;
+        const url = `${API_URL}/hoodpub/`;
 
         if (keyword.length === 0) {
             return Observable.of(null);
         }
 
         return this.http.get<BookSearch>(url, { params }).pipe(
-            map((response: BookSearch) => response.res.channel.item),
+            map((response: BookSearch) => response.channel.item),
             tap(info => console.log('info', info)),
             catchError(this.handleError('getData'))
         );

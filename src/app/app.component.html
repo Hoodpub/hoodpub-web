@@ -25,10 +25,6 @@
 </form>
 
 
-<div class="text-center">
-  <p class="lead" *ngIf="loading">Loading...</p>
-</div>
-
 <tr *ngFor="let book of books$ | async"  flex fxLayout="column" fxLayout.lt-sm="column">
   <mat-card class="example-card">
     <mat-card-header>
