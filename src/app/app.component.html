@@ -25,17 +25,17 @@
 </form>
 
 
-<tr *ngFor="let book of books$ | async"  flex fxLayout="column" fxLayout.lt-sm="column">
+<tr *ngFor="let user of users$ | async"  flex fxLayout="column" fxLayout.lt-sm="column">
   <mat-card class="example-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{ book.author }}</mat-card-title>
-      <mat-card-subtitle>{{ book.category }}</mat-card-subtitle>
+      <div mat-card-avatar class="example-header-image"><img src="{{ user.image_profile.small_square_crop }}"/></div>
+      <mat-card-title>{{ user.username }}</mat-card-title>
+      <mat-card-subtitle>hello</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image class="book-image" src="{{ book.cover_l_url }}" alt="Photo of a Shiba Inu">
+    <img mat-card-image class="user-image" src="{{ user.cover_l_url }}" >
     <mat-card-content>
       <p>
-        {{ book.description }}
+        {{ user.description }}
       </p>
     </mat-card-content>
     <mat-card-actions>

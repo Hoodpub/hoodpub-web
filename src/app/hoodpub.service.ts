@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular
 import { catchError, map, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
-import { BookItem, Channel, BookSearch } from './protocol';
+import { UserItem, Channel, BookSearch } from './protocol';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/of';
 import { API_URL } from './main/api';
@@ -31,17 +31,17 @@ export class HoodpubService {
             return Observable.throw(errMsg);
         };
     }
-    search(keyword?: string): Observable<BookItem[]> {
+    search(keyword?: string): Observable<UserItem[]> {
         console.log('keyword', keyword);
-        const params = new HttpParams().set('keyword', keyword);
+        // const params = new HttpParams().set('keyword', keyword);
         const url = `${API_URL}/hoodpub/`;
 
         if (keyword.length === 0) {
             return Observable.of(null);
         }
 
-        return this.http.get<BookSearch>(url, { params }).pipe(
-            map((response: BookSearch) => response.channel.item),
+        return this.http.get<any>(url).pipe(
+            map((response: any) => response),
             tap(info => console.log('info', info)),
             catchError(this.handleError('getData'))
         );

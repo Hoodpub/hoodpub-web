@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HoodpubService } from './hoodpub.service';
 import { Observable } from 'rxjs/Observable';
 import { FormControl } from '@angular/forms';
-import { BookItem, Channel, BookSearch } from './protocol';
+import { UserItem, Channel, BookSearch } from './protocol';
 import { debounceTime, filter, map, switchMap, tap, distinctUntilChanged } from 'rxjs/operators';
 
 
@@ -13,7 +13,7 @@ import { debounceTime, filter, map, switchMap, tap, distinctUntilChanged } from 
 })
 
 export class AppComponent implements OnInit {
-    books$: Observable<BookItem[]>;
+    users$: Observable<any[]>;
     public searchField: FormControl;
 
     constructor(private hoodpubService: HoodpubService) {
@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.searchField = new FormControl();
-        this.books$ = this.searchField.valueChanges.pipe(
-            debounceTime(400),
+        this.users$ = this.searchField.valueChanges.pipe(
+            debounceTime(1000),
             distinctUntilChanged(),
             switchMap(term => this.hoodpubService.search(term)));
     }
