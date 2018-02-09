@@ -14,3 +14,32 @@
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+
+
+.container-userbook {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-user {
+    flex: 1;
+}
+
+.container-book {
+    flex: 2;
+    display: flex;
+}
+
+.item-book {
+    flex: 1;
+    padding:5px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.round {
+    border-radius: 50%;
+}

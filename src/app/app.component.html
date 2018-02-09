@@ -12,7 +12,6 @@
     <span class="example-spacer"></span>
     <button mat-button>Contact</button>
   </mat-toolbar-row>
-  
 </mat-toolbar>
 
 <form class="form-inline">
@@ -24,23 +23,17 @@
   </div>
 </form>
 
+<tr *ngFor="let user of users$ | async" class="container-userbook">
+  <div class="container-user">
+    {{ user.first_name}}
+    <img src="{{ user.image_profile.thumbnail}}" class="round">
+  </div>
 
-<tr *ngFor="let user of users$ | async"  flex fxLayout="column" fxLayout.lt-sm="column">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"><img src="{{ user.image_profile.small_square_crop }}"/></div>
-      <mat-card-title>{{ user.username }}</mat-card-title>
-      <mat-card-subtitle>hello</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image class="user-image" src="{{ user.cover_l_url }}" >
-    <mat-card-content>
-      <p>
-        {{ user.description }}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
+  <div class="container-book">
+    <div *ngFor="let userbook of user.userbooks">
+      <img src="{{ userbook.book.cover_s_url}}" >
+    </div>
+  </div>
+  
 </tr>
+
