@@ -33,14 +33,10 @@ export class HoodpubService {
     }
     search(keyword?: string): Observable<UserItem[]> {
         console.log('keyword', keyword);
-        // const params = new HttpParams().set('keyword', keyword);
-        const url = `${API_URL}/hoodpub/`;
+        const params = new HttpParams().set('search', keyword);
+        const url = `${API_URL}/userbook/`;
 
-        if (keyword.length === 0) {
-            return Observable.of(null);
-        }
-
-        return this.http.get<any>(url).pipe(
+        return this.http.get<any>(url, { params }).pipe(
             map((response: any) => response),
             tap(info => console.log('info', info)),
             catchError(this.handleError('getData'))

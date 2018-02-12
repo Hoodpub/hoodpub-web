@@ -22,11 +22,11 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.searchField = new FormControl();
-        this.users$ = this.hoodpubService.search('hi');
-        // this.users$ = this.searchField.valueChanges.pipe(
-        //     debounceTime(1000),
-        //     distinctUntilChanged(),
-        //     switchMap(term => this.hoodpubService.search(term)));
+        // this.users$ = this.hoodpubService.search('hi');
+        this.users$ = this.searchField.valueChanges.pipe(
+            debounceTime(1000),
+            distinctUntilChanged(),
+            switchMap(term => this.hoodpubService.search(term)));
     }
 
 // doSearch(keyword?: string) {
